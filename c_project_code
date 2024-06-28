@@ -1,0 +1,91 @@
+#include<stdio.h>
+#include<string.h>
+struct book{
+	int id;
+	char name[30];
+	char author[30];
+	int qty;
+	int price;
+}book1[20];
+int main()
+{
+	int choice,book_id,price,total_books=0,c;
+	char book_name[30],author_nm[30];
+	while(choice!=5)
+	{
+		printf("\n~~~~~~~CROSSWORD BOOKSTORE~~~~~~~~");
+		printf("\n 1.ADD BOOK \n 2.DISPLAY BOOK \n 3. SEARCH BOOK \n 4.DELETE BOOK \n 5.EXIT");
+		printf("\n enter your choice:");
+		scanf("%i",&choice);
+		switch(choice)
+		{
+			case 1:
+				printf("\n ENTER THE BOOK DETAILS:");
+				printf("\n enter the book id:");
+				scanf("%i",&book_id);
+				printf("\n enter the book name:");
+				scanf("%s",&book_name);
+				printf("\n enter the author name:");
+				scanf("%s",&author_nm);
+				printf("\n enter the price:");
+				scanf("%i",&price);
+				book1[total_books].id=book_id;
+				strcpy(book1[total_books].name,book_name);
+				strcpy(book1[total_books].author,author_nm);
+				book1[total_books].price=price;
+				total_books++;
+				break;
+				
+			case 2:
+				printf("\n BOOK DETAILS:");
+				for(int i=0;i<total_books;i++)
+				{
+					printf("\n BOOK ID: %i",book1[i].id);
+					printf("\n BOOK NAME: %s",book1[i].name);
+					printf("\n BOOK AUTHOR: %s",book1[i].author);
+					printf("\n BOOK PRICE: %i",book1[i].price);
+				}
+				break;
+				
+			case 3:
+				printf("\n SEARCH A BOOK WITH ITS DETAILS");
+				printf("\n enter the book id to be searched: ");
+				scanf("%i",&book_id);
+				for(int i=0;i<total_books;i++)
+				{
+					if(book1[i].id==book_id)
+					{
+						printf("\n BOOK ID: %i",book1[i].id);
+						printf("\n BOOK NAME: %s",book1[i].name);
+						printf("\n BOOK AUTHOR: %s",book1[i].author);
+						printf("\n BOOK PRICE: %i",book1[i].price);
+						break;
+					}
+				}
+			
+			case 4:
+				printf("\n DELETE A BOOK");
+				printf("\n enter the book id which is to be deleted:");
+				scanf("%i",&book_id);
+				for(int i=0;i<total_books;i++)
+				{
+					if(book1[i].id==book_id)
+					{
+						for(int j=i;j<total_books;j++)
+						{
+							book1[j]=book1[j+1];
+						}
+						total_books--;
+						break;
+					}
+				}
+				break;
+				
+			case 5:
+				printf("\n EXITING THIS SYSTEM.GOODBYE!");
+				break;
+				
+				
+		}
+	}
+}
